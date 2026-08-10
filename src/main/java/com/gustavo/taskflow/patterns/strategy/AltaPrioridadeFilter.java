@@ -8,6 +8,6 @@ import java.util.List;
 public class AltaPrioridadeFilter implements TaskFilter {
     @Override
     public List<Task> filtrar(List<Task> list) {
-        return list.stream().filter((prioridade) -> prioridade.getPrioridade() == Priority.ALTA).toList();
+        return list.stream().filter((task) -> task.getPrioridade() == Priority.ALTA).toList();
     }
 }
