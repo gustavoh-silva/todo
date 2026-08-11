@@ -2,7 +2,7 @@ package com.gustavo.taskflow.model;
 
 import java.time.OffsetDateTime;
 
-public class Task {
+public abstract class Task {
     private long id;
     private String titulo;
     private String descricao;
