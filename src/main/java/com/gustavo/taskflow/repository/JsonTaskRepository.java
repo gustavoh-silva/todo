@@ -23,9 +23,14 @@ public class JsonTaskRepository implements TaskRepositoryInterface{
     public JsonTaskRepository() {
         if (Files.exists(Path.of(ARQUIVO))){
             try{
-                this.tarefas = gson.fromJson(ARQUIVO, new TypeToken<List<TaskComum>>(){}.getType());
+                var json = Files.readString(Path.of(ARQUIVO));
+                this.tarefas = gson.fromJson(json, new TypeToken<List<TaskComum>>(){}.getType());
             }catch (JsonSyntaxException e){
                 System.out.println("Arquivo corrompido");
+                tarefas = new ArrayList<>();
+            } catch (IOException e) {
+                System.out.println("Falha ao ler arquivo");
+                tarefas = new ArrayList<>();
             }
         } else{
             this.tarefas = new ArrayList<>();
@@ -38,9 +43,13 @@ public class JsonTaskRepository implements TaskRepositoryInterface{
     }
 
     @Override
-    public void addTask(Task task) throws IOException {
+    public void addTask(Task task) {
         this.tarefas.add(task);
-        salvar();
+        try {
+            salvar();
+        }catch (IOException e){
+            throw new RuntimeException("Erro ao salvar json", e);
+        }
     }
 
     @Override
@@ -59,13 +68,18 @@ public class JsonTaskRepository implements TaskRepositoryInterface{
     }
 
     @Override
-    public boolean remove(long id) throws IOException {
+    public boolean remove(long id) {
         for (Task task : this.tarefas){
             if (task.getId() == id){
-                return this.tarefas.remove(task);
+                var deletada = this.tarefas.remove(task);
+                try{
+                    salvar();
+                    return deletada;
+                }catch (IOException e){
+                    throw new RuntimeException("Erro ao salvar json", e);
+                }
             }
         }
-        salvar();
         return false;
     }
 }
