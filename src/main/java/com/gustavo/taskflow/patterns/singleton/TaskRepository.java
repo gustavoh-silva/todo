@@ -1,12 +1,13 @@
 package com.gustavo.taskflow.patterns.singleton;
 
 import com.gustavo.taskflow.model.Task;
+import com.gustavo.taskflow.repository.TaskRepositoryInterface;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class TaskRepository {
+public class TaskRepository implements TaskRepositoryInterface {
     private static final TaskRepository instance = new TaskRepository();
 
     private TaskRepository() {
