@@ -2,6 +2,7 @@ package com.gustavo.todo.cli;
 
 import com.gustavo.todo.model.Priority;
 import com.gustavo.todo.model.Task;
+import com.gustavo.todo.model.TaskInvalidaException;
 import com.gustavo.todo.patterns.chain.PrioridadeValidator;
 import com.gustavo.todo.patterns.chain.TamanhoValidator;
 import com.gustavo.todo.patterns.chain.TituloValidator;
@@ -10,6 +11,7 @@ import com.gustavo.todo.patterns.strategy.AltaPrioridadeFilter;
 import com.gustavo.todo.patterns.strategy.PendentesFilter;
 import com.gustavo.todo.repository.JsonTaskRepository;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -40,12 +42,17 @@ public class TodoCLI {
                     scanner.nextLine(); // limpa o \n sobrado do nextLong()
 
                     System.out.println("Digite a prioridade");
-                    Priority prioridade = Priority.valueOf(scanner.next());
-                    scanner.nextLine(); // limpa o \n sobrado do next()
 
-                    Task task = factory.createTask(titulo, id, prioridade);
-                    chain.validar(task);
-                    repository.addTask(task);
+                    try {
+                        Priority prioridade = Priority.valueOf(scanner.next());
+                        scanner.nextLine(); // limpa o \n sobrado do next()
+                        Task task = factory.createTask(titulo, id, prioridade);
+                        chain.validar(task);
+                        repository.addTask(task);
+                    }catch (TaskInvalidaException | IllegalArgumentException e){
+                        System.out.println(e.getMessage());
+                    }
+
                 }
                 case "list" -> {
                     System.out.println("Deseja aplicar algum filtro? (y/N)");
@@ -70,8 +77,12 @@ public class TodoCLI {
                     scanner.nextLine(); // limpa o \n sobrado do nextLong()
 
                     Task task = repository.findById(id);
-                    if (task != null && !task.isConcluida()){
-                        task.marcarConcluida();
+                    if (task != null){
+                        if(task.isConcluida()){
+                            System.out.println("Tarefa já estava concluida");
+                        }else{
+                            task.marcarConcluida();
+                        }
                         repository.save();
                         System.out.println("Task marcada como concluída!");
                     } else {
