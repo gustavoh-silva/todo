@@ -42,5 +42,10 @@ public class TaskRepository implements TaskRepositoryInterface {
         }
         return false;
     }
+
+    @Override
+    public void save() {
+        // Singleton em memória — nada a persistir
+    }
 }
 

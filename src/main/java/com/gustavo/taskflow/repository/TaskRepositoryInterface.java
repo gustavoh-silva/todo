@@ -10,4 +10,5 @@ public interface TaskRepositoryInterface {
     List<Task> getAll();
     Task findById(long id);
     boolean remove(long id);
+    void save();
 }

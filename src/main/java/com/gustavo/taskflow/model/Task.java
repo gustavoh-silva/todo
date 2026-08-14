@@ -41,7 +41,7 @@ public abstract class Task {
         return dataCriacao;
     }
 
-    public void marcarConcluida(boolean concluida) {
-        this.concluida = concluida;
+    public void marcarConcluida() {
+        this.concluida = true;
     }
 }
