@@ -82,9 +82,9 @@ public class TodoCLI {
                             System.out.println("Tarefa já estava concluida");
                         }else{
                             task.marcarConcluida();
+                            repository.save();
+                            System.out.println("Task marcada como concluída!");
                         }
-                        repository.save();
-                        System.out.println("Task marcada como concluída!");
                     } else {
                         System.out.println("Task não encontrada.");
                     }
