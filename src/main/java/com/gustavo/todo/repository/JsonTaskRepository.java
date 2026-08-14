@@ -1,4 +1,4 @@
-package com.gustavo.taskflow.repository;
+package com.gustavo.todo.repository;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -11,8 +11,8 @@ import com.google.gson.JsonSerializationContext;
 import com.google.gson.JsonSerializer;
 import com.google.gson.JsonSyntaxException;
 import com.google.gson.reflect.TypeToken;
-import com.gustavo.taskflow.model.Task;
-import com.gustavo.taskflow.model.TaskComum;
+import com.gustavo.todo.model.Task;
+import com.gustavo.todo.model.TaskComum;
 
 import java.io.IOException;
 import java.nio.file.Files;

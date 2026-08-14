@@ -17,7 +17,7 @@ dependencies {
 }
 
 application {
-    mainClass = 'com.gustavo.taskflow.app.Main'
+    mainClass = 'com.gustavo.todo.app.Main'
 }
 
 java {

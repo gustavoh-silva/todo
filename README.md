@@ -1,4 +1,4 @@
-# TaskFlow
+# ToDo
 
 Sistema de gerenciamento de tarefas desenvolvido como projeto do **Bootcamp Santander 2026 — AI Java Back-end (DIO)**, para o desafio **"Design Patterns com Java: Dos Clássicos (GoF) ao Spring Framework"**.
 

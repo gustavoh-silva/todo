@@ -1,6 +1,6 @@
-package com.gustavo.taskflow.repository;
+package com.gustavo.todo.repository;
 
-import com.gustavo.taskflow.model.Task;
+import com.gustavo.todo.model.Task;
 
 import java.io.IOException;
 import java.util.List;

@@ -1,7 +1,7 @@
-package com.gustavo.taskflow.patterns.singleton;
+package com.gustavo.todo.patterns.singleton;
 
-import com.gustavo.taskflow.model.Task;
-import com.gustavo.taskflow.repository.TaskRepositoryInterface;
+import com.gustavo.todo.model.Task;
+import com.gustavo.todo.repository.TaskRepositoryInterface;
 
 import java.util.ArrayList;
 import java.util.Collections;

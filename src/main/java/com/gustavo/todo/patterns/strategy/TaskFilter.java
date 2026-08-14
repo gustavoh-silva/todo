@@ -1,6 +1,6 @@
-package com.gustavo.taskflow.patterns.strategy;
+package com.gustavo.todo.patterns.strategy;
 
-import com.gustavo.taskflow.model.Task;
+import com.gustavo.todo.model.Task;
 
 import java.util.List;
 

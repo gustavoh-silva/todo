@@ -1,4 +1,4 @@
-package com.gustavo.taskflow.model;
+package com.gustavo.todo.model;
 
 import java.time.OffsetDateTime;
 

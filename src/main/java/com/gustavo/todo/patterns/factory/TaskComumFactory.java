@@ -1,8 +1,8 @@
-package com.gustavo.taskflow.patterns.factory;
+package com.gustavo.todo.patterns.factory;
 
-import com.gustavo.taskflow.model.Priority;
-import com.gustavo.taskflow.model.Task;
-import com.gustavo.taskflow.model.TaskComum;
+import com.gustavo.todo.model.Priority;
+import com.gustavo.todo.model.Task;
+import com.gustavo.todo.model.TaskComum;
 
 public class TaskComumFactory implements TaskFactory{
     @Override

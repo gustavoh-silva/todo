@@ -1,7 +1,7 @@
-package com.gustavo.taskflow.patterns.chain;
+package com.gustavo.todo.patterns.chain;
 
-import com.gustavo.taskflow.model.Task;
-import com.gustavo.taskflow.model.TaskInvalidaException;
+import com.gustavo.todo.model.Task;
+import com.gustavo.todo.model.TaskInvalidaException;
 
 public class TamanhoValidator extends TaskValidator{
     @Override

@@ -1,19 +1,19 @@
-package com.gustavo.taskflow.cli;
+package com.gustavo.todo.cli;
 
-import com.gustavo.taskflow.model.Priority;
-import com.gustavo.taskflow.model.Task;
-import com.gustavo.taskflow.patterns.chain.PrioridadeValidator;
-import com.gustavo.taskflow.patterns.chain.TamanhoValidator;
-import com.gustavo.taskflow.patterns.chain.TituloValidator;
-import com.gustavo.taskflow.patterns.factory.TaskComumFactory;
-import com.gustavo.taskflow.patterns.strategy.AltaPrioridadeFilter;
-import com.gustavo.taskflow.patterns.strategy.PendentesFilter;
-import com.gustavo.taskflow.repository.JsonTaskRepository;
+import com.gustavo.todo.model.Priority;
+import com.gustavo.todo.model.Task;
+import com.gustavo.todo.patterns.chain.PrioridadeValidator;
+import com.gustavo.todo.patterns.chain.TamanhoValidator;
+import com.gustavo.todo.patterns.chain.TituloValidator;
+import com.gustavo.todo.patterns.factory.TaskComumFactory;
+import com.gustavo.todo.patterns.strategy.AltaPrioridadeFilter;
+import com.gustavo.todo.patterns.strategy.PendentesFilter;
+import com.gustavo.todo.repository.JsonTaskRepository;
 
 import java.util.List;
 import java.util.Scanner;
 
-public class TaskFlowCLI {
+public class TodoCLI {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args){
@@ -70,7 +70,7 @@ public class TaskFlowCLI {
                     scanner.nextLine(); // limpa o \n sobrado do nextLong()
 
                     Task task = repository.findById(id);
-                    if (task != null){
+                    if (task != null && !task.isConcluida()){
                         task.marcarConcluida();
                         repository.save();
                         System.out.println("Task marcada como concluída!");
